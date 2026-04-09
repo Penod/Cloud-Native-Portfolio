@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200">
-                  <div className="text-blue-600" aria-hidden="true">Location</div>
+                  <div className="text-blue-600" aria-hidden="true">📍</div>
                   <div>
                     <div className="font-medium text-gray-800">Location</div>
                     <div className="text-gray-600">Texas, USA</div>
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200">
-                  <div className="text-green-600" aria-hidden="true">Email</div>
+                  <div className="text-green-600" aria-hidden="true">📧</div>
                   <div>
                     <div className="font-medium text-gray-800">Email</div>
                     <div className="text-gray-600">{contactEmail}</div>
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200">
-                  <div className="text-purple-600" aria-hidden="true">Phone</div>
+                  <div className="text-purple-600" aria-hidden="true">📱</div>
                   <div>
                     <div className="font-medium text-gray-800">Phone</div>
                     <div className="text-gray-600">+1 (936) 720-1908</div>
