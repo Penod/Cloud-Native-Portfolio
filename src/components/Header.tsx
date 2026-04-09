@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navItems = ['home', 'projects', 'skills', 'experience', 'hobbies', 'about', 'contact'];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -21,32 +22,25 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection('home')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Home
-            </button>
-            <button onClick={() => scrollToSection('projects')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Projects
-            </button>
-            <button onClick={() => scrollToSection('skills')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Skills
-            </button>
-            <button onClick={() => scrollToSection('experience')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Experience
-            </button>
-            <button onClick={() => scrollToSection('hobbies')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Hobbies
-            </button>
-            <button onClick={() => scrollToSection('about')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              About
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              Contact
-            </button>
+            {navItems.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => scrollToSection(item)}
+                className="font-medium capitalize text-gray-600 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded"
+              >
+                {item}
+              </button>
+            ))}
           </div>
 
           {/* Mobile menu button */}
           <button
+            type="button"
             className="md:hidden p-2"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
@@ -59,29 +53,18 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div id="mobile-menu" className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Home
-              </button>
-              <button onClick={() => scrollToSection('projects')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Projects
-              </button>
-              <button onClick={() => scrollToSection('skills')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Skills
-              </button>
-              <button onClick={() => scrollToSection('experience')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Experience
-              </button>
-              <button onClick={() => scrollToSection('hobbies')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Hobbies
-              </button>
-              <button onClick={() => scrollToSection('about')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                About
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="font-medium text-gray-600 hover:text-blue-600 transition-colors text-left">
-                Contact
-              </button>
+              {navItems.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => scrollToSection(item)}
+                  className="font-medium capitalize text-gray-600 hover:text-blue-600 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded"
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
         )}
