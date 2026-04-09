@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const Projects: React.FC = () => {
   const projects = [
@@ -103,6 +103,13 @@ const Projects: React.FC = () => {
     }
   ];
 
+  const getYear = (dateLabel: string): number => {
+    const match = dateLabel.match(/(20\d{2})/);
+    return match ? Number(match[1]) : 0;
+  };
+
+  const sortedProjects = [...projects].sort((a, b) => getYear(b.date) - getYear(a.date));
+
   return (
     <section id="projects" className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,7 +119,7 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="grid gap-8 lg:gap-12">
-          {projects.map((project) => (
+          {sortedProjects.map((project) => (
             <div
               key={project.id}
               className="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
@@ -127,7 +134,7 @@ const Projects: React.FC = () => {
                   <ul className="space-y-2">
                     {project.highlights.map((highlight, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-green-500 mr-3 mt-1">�</span>
+                        <span className="text-green-500 mr-3 mt-1">•</span>
                         <span className="text-gray-700">{highlight}</span>
                       </li>
                     ))}
