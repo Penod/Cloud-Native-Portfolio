@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
         'Built an end-to-end computational drug discovery pipeline: ChEMBL bioactivity curation, RDKit molecular feature engineering (2,226 descriptors/fingerprints), and 7-classifier model comparison',
         'Best model (XGBoost) reached ROC-AUC 0.9845 / PR-AUC 0.9957 on holdout, confirmed stable via 5-fold stratified cross-validation and a dummy-baseline sanity check',
         'Integrated SHAP for model interpretability and designed a 10-agent agentic workflow (validation, target-fit, mutant selectivity, ADMET, toxicity, literature, manufacturability, clinical relevance, ranking)',
-        'Ran ZINC22 virtual screening of ~5,000 lead-like compounds with a reproducible, criteria-based hit-triage CLI (no manual hit selection)',
+        'Ran ZINC22 virtual screening of ~5,000 lead-like compounds with a reproducible, criteria-based hit-triage CLI',
         'Mapped the pipeline to a cloud-ready AWS architecture (S3, ECR, Batch/ECS Fargate, SageMaker, CloudWatch) and published a full methodology write-up on Medium',
       ],
       technologies: ['Python', 'RDKit', 'XGBoost', 'Scikit-learn', 'SHAP', 'ChEMBL', 'ZINC22', 'Agentic AI', 'AWS'],
