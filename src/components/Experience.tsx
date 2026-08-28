@@ -31,7 +31,7 @@ const Experience: React.FC = () => {
       id: 3,
       title: "STEM Instructor",
       company: "Unigrant Ghana LTD",
-      period: "Aug 2022 - April 2024",
+      period: "Aug 2022 - April 2023",
       achievements: [
         "Designed structured lesson plans integrating analytics concepts to improve student comprehension and performance",
         "Taught remedial students Mathematics, Physics, and Chemistry",
