@@ -18,7 +18,7 @@ const Experience: React.FC = () => {
       id: 2,
       title: "Data Analytics Consultant",
       company: "EmPen Data Consulting",
-      period: "Aug 2021 - Jun 2023",
+      period: "May 2024 - Jan 2026",
       achievements: [
         "Developed and deployed Tableau dashboards to track model performance and operational metrics, improving data-driven decision-making",
         "Led a team of four analysts in building enterprise BI solutions, aligning KPIs and reporting systems with operational objectives",
@@ -31,7 +31,7 @@ const Experience: React.FC = () => {
       id: 3,
       title: "STEM Instructor",
       company: "Unigrant Ghana LTD",
-      period: "Aug 2021 - Jun 2023",
+      period: "Aug 2022 - April 2024",
       achievements: [
         "Designed structured lesson plans integrating analytics concepts to improve student comprehension and performance",
         "Taught remedial students Mathematics, Physics, and Chemistry",
