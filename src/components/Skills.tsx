@@ -44,13 +44,13 @@ const Skills: React.FC = () => {
       issuer: "AWS"
     },
     {
-      name: "AWS Certified AI Practitioner Early Adopter",
-      url: "https://www.credly.com/badges/1304774c-697c-4985-9537-c61babb2758d/linked_in_profile",
+      name: "AWS Certified AI Practitioner",
+      url: "https://www.credly.com/badges/4edd9a69-635f-46d3-91da-81770fd1d4a4/linked_in_profile",
       issuer: "AWS"
     },
     {
-      name: "AWS Certified AI Practitioner",
-      url: "https://www.credly.com/badges/4edd9a69-635f-46d3-91da-81770fd1d4a4/linked_in_profile",
+      name: "AWS Certified Cloud Practitioner",
+      url: null,
       issuer: "AWS"
     },
     {
@@ -59,19 +59,9 @@ const Skills: React.FC = () => {
       issuer: "AWS"
     },
     {
-      name: "Migration and Modernization on AWS (BeSA)",
-      url: "https://besa.techcreator.io/certification/emmanueldonkoh1167995/migration-and-modernization-on-aws-4d13fd",
-      issuer: "AWS"
-    },
-    {
-      name: "Docker Foundations",
-      url: "https://www.linkedin.com/learning/certificates/376c800c838820b2b3fbf06f28439c368554036966224d11ffc7fc87374cc5ec",
-      issuer: "Docker"
-    },
-    {
-      name: "Google Project Management",
-      url: "https://www.credly.com/go/a4F8K7eq",
-      issuer: "Google"
+      name: "Tableau Business Intelligence Analyst",
+      url: "https://www.coursera.org/account/accomplishments/specialization/PAZFN9LONC9O",
+      issuer: "Tableau"
     },
     {
       name: "Google Data Analytics",
@@ -79,34 +69,9 @@ const Skills: React.FC = () => {
       issuer: "Google"
     },
     {
-      name: "Google IT Support",
-      url: "https://www.credly.com/badges/2be18b89-6c12-472d-a227-61a6c3a02b1a/public_url",
+      name: "Google Project Management",
+      url: "https://www.credly.com/go/a4F8K7eq",
       issuer: "Google"
-    },
-    {
-      name: "Tableau Business Intelligence Analyst",
-      url: "https://www.coursera.org/account/accomplishments/specialization/PAZFN9LONC9O",
-      issuer: "Tableau"
-    },
-    {
-      name: "Python for Data Science and AI",
-      url: "https://www.credly.com/badges/6fea31d8-0b87-46b5-9b71-fcccc9e0d833/linked_in_profile",
-      issuer: "IBM"
-    },
-    {
-      name: "Advanced NLP with Python for Machine Learning",
-      url: "https://www.linkedin.com/learning/certificates/5e8914e04dbe6613719b8ee0176c933cf798c9bbe5b2d70268c665cd894d744f",
-      issuer: "LinkedIn"
-    },
-    {
-      name: "Artificial Intelligence Foundations: Machine Learning",
-      url: "https://www.linkedin.com/learning/certificates/6719728a1d4f5c053644079fcd6ce984bf91293ef28fc449167677f09c17ae69",
-      issuer: "LinkedIn"
-    },
-    {
-      name: "McKinsey Forward Program",
-      url: "https://www.credly.com/badges/2c011842-9ef9-4399-b588-f34448e29991/linked_in_profile",
-      issuer: "McKinsey"
     }
   ];
 
@@ -156,24 +121,52 @@ const Skills: React.FC = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((certification, index) => (
-              <a
-                key={index}
-                href={certification.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200 hover:shadow-md group"
-              >
-                <span className="text-green-500 mr-3 mt-1">✅</span>
-                <div>
-                  <span className="text-gray-700 font-medium group-hover:text-blue-700 transition-colors">
-                    {certification.name}
-                  </span>
-                  <div className="text-xs text-gray-500 mt-1">{certification.issuer}</div>
+            {certifications.map((certification, index) => {
+              const cardContent = (
+                <>
+                  <span className="text-green-500 mr-3 mt-1">✅</span>
+                  <div>
+                    <span className="text-gray-700 font-medium group-hover:text-blue-700 transition-colors">
+                      {certification.name}
+                    </span>
+                    <div className="text-xs text-gray-500 mt-1">{certification.issuer}</div>
+                  </div>
+                </>
+              );
+
+              return certification.url ? (
+                <a
+                  key={index}
+                  href={certification.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200 hover:shadow-md group"
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <div
+                  key={index}
+                  className="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200 group"
+                >
+                  {cardContent}
                 </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
+
+          <p className="text-center text-sm text-gray-500 mt-6">
+            See the full list of certifications on{' '}
+            <a
+              href="https://www.linkedin.com/in/emmanuel-donkoh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline font-medium"
+            >
+              LinkedIn
+            </a>
+            .
+          </p>
         </div>
 
         {/* AWS Specialization Badge */}
