@@ -1,23 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Contact: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'contact' | 'resume'>('contact');
   const contactEmail = 'emmanueldonkoh335@gmail.com';
-
-  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const name = String(formData.get('name') || '');
-    const email = String(formData.get('email') || '');
-    const message = String(formData.get('message') || '');
-
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name || 'Website Visitor'}`);
-    const body = encodeURIComponent(
-      `Hello Emmanuel,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`
-    );
-
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-  };
 
   const handleResumeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,35 +27,8 @@ const Contact: React.FC = () => {
           <div className="bg-black rounded-2xl p-8 mb-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">Get In Touch</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Interested in working together? Reach out or request my resume below.
+              Interested in working together? Request my resume below or reach out directly.
             </p>
-          </div>
-
-          <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-lg p-1 shadow-sm border border-gray-200">
-              <button
-                type="button"
-                onClick={() => setActiveTab('contact')}
-                className={`px-6 py-3 rounded-md font-medium transition-colors ${
-                  activeTab === 'contact'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Send Message
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('resume')}
-                className={`px-6 py-3 rounded-md font-medium transition-colors ${
-                  activeTab === 'resume'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Request Resume
-              </button>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -112,156 +69,93 @@ const Contact: React.FC = () => {
             </div>
 
             <div>
-              {activeTab === 'contact' ? (
+              <h3 className="text-xl font-semibold text-gray-800 mb-6">Request My Resume</h3>
+              <form className="space-y-6" onSubmit={handleResumeSubmit}>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-6">Send Message</h3>
-                  <form className="space-y-6" onSubmit={handleContactSubmit}>
-                    <div>
-                      <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Name
-                      </label>
-                      <input
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        required
-                        autoComplete="name"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="Your name"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        rows={5}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="Tell me about your project or opportunity..."
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                    >
-                      Send Message
-                    </button>
-                    <p className="text-sm text-gray-500 text-center">
-                      This opens your email app with a pre-filled message.
-                    </p>
-                  </form>
+                  <label htmlFor="resume-name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Name *
+                  </label>
+                  <input
+                    id="resume-name"
+                    name="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    placeholder="Your full name"
+                  />
                 </div>
-              ) : (
+
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-6">Request My Resume</h3>
-                  <form className="space-y-6" onSubmit={handleResumeSubmit}>
-                    <div>
-                      <label htmlFor="resume-name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Name *
-                      </label>
-                      <input
-                        id="resume-name"
-                        name="name"
-                        type="text"
-                        required
-                        autoComplete="name"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="Your full name"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="resume-email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email *
-                      </label>
-                      <input
-                        id="resume-email"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="your.company@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="resume-company" className="block text-sm font-medium text-gray-700 mb-2">
-                        Company/Organization
-                      </label>
-                      <input
-                        id="resume-company"
-                        name="company"
-                        type="text"
-                        autoComplete="organization"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="Where do you work?"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="resume-role" className="block text-sm font-medium text-gray-700 mb-2">
-                        Position of Interest
-                      </label>
-                      <select
-                        id="resume-role"
-                        name="role"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                      >
-                        <option value="">Select a role type</option>
-                        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
-                        <option value="Data Scientist">Data Scientist</option>
-                        <option value="MLOps Engineer">MLOps Engineer</option>
-                        <option value="Data Engineer">Data Engineer</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="resume-notes" className="block text-sm font-medium text-gray-700 mb-2">
-                        Additional Notes (Optional)
-                      </label>
-                      <textarea
-                        id="resume-notes"
-                        name="notes"
-                        rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                        placeholder="Any specific skills or experience you're looking for?"
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors"
-                    >
-                      Request Resume
-                    </button>
-                    <p className="text-sm text-gray-500 text-center">
-                      This opens your email app with your request details and I usually respond within 24 hours.
-                    </p>
-                  </form>
+                  <label htmlFor="resume-email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    id="resume-email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    placeholder="your.company@example.com"
+                  />
                 </div>
-              )}
+
+                <div>
+                  <label htmlFor="resume-company" className="block text-sm font-medium text-gray-700 mb-2">
+                    Company/Organization
+                  </label>
+                  <input
+                    id="resume-company"
+                    name="company"
+                    type="text"
+                    autoComplete="organization"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    placeholder="Where do you work?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="resume-role" className="block text-sm font-medium text-gray-700 mb-2">
+                    Position of Interest
+                  </label>
+                  <select
+                    id="resume-role"
+                    name="role"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  >
+                    <option value="">Select a role type</option>
+                    <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="MLOps Engineer">MLOps Engineer</option>
+                    <option value="Data Engineer">Data Engineer</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="resume-notes" className="block text-sm font-medium text-gray-700 mb-2">
+                    Additional Notes (Optional)
+                  </label>
+                  <textarea
+                    id="resume-notes"
+                    name="notes"
+                    rows={3}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    placeholder="Any specific skills or experience you're looking for?"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                >
+                  Request Resume
+                </button>
+                <p className="text-sm text-gray-500 text-center">
+                  This opens your email app with your request details and I usually respond within 24 hours.
+                </p>
+              </form>
             </div>
           </div>
 
