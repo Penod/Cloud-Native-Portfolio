@@ -3,6 +3,24 @@
 const Projects: React.FC = () => {
   const projects = [
     {
+      id: 7,
+      title: 'Agentic AI Platform for KRAS Inhibitor Discovery',
+      date: 'Computational Drug Discovery | 2026',
+      highlights: [
+        'Built an end-to-end computational drug discovery pipeline: ChEMBL bioactivity curation, RDKit molecular feature engineering (2,226 descriptors/fingerprints), and 7-classifier model comparison',
+        'Best model (XGBoost) reached ROC-AUC 0.9845 / PR-AUC 0.9957 on holdout, confirmed stable via 5-fold stratified cross-validation and a dummy-baseline sanity check',
+        'Integrated SHAP for model interpretability and designed a 10-agent agentic workflow (validation, target-fit, mutant selectivity, ADMET, toxicity, literature, manufacturability, clinical relevance, ranking)',
+        'Ran ZINC22 virtual screening of ~5,000 lead-like compounds with a reproducible, criteria-based hit-triage CLI (no manual hit selection)',
+        'Mapped the pipeline to a cloud-ready AWS architecture (S3, ECR, Batch/ECS Fargate, SageMaker, CloudWatch) and published a full methodology write-up on Medium',
+      ],
+      technologies: ['Python', 'RDKit', 'XGBoost', 'Scikit-learn', 'SHAP', 'ChEMBL', 'ZINC22', 'Agentic AI', 'AWS'],
+      links: {
+        github: 'https://github.com/Penod/agentic-ai-kras-inhibitor-discovery',
+        demo: null,
+        article: 'https://medium.com/@emmanueldonkoh335/building-an-agentic-ai-platform-for-kras-inhibitor-discovery-00e8396adf66'
+      }
+    },
+    {
       id: 1,
       title: 'Cloud-Native Portfolio Platform',
       date: 'AWS Infrastructure | 2025',
@@ -174,6 +192,19 @@ const Projects: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                       Live Demo
+                    </a>
+                  )}
+                  {(project.links as any).article && (
+                    <a
+                      href={(project.links as any).article}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-transparent border border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 text-sm flex items-center gap-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                      Read Article
                     </a>
                   )}
                 </div>
