@@ -38,9 +38,7 @@ const Hero: React.FC = () => {
                 Get In Touch
               </button>
               <button 
-                onClick={() => {
-                  window.location.href = 'mailto:emmanueldonkoh335@gmail.com?subject=Resume Request - Emmanuel Donkoh&body=Hello Emmanuel,%0D%0A%0D%0AI visited your portfolio and would like to request your resume.%0D%0A%0D%0ABest regards,';
-                }}
+                onClick={() => scrollToSection('contact')}
                 className="bg-transparent hover:bg-white text-white hover:text-slate-900 border-2 border-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2 group"
               >
                 <span>📄</span>
